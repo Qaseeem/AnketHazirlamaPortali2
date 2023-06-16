@@ -1,0 +1,65 @@
+<div class="container">
+  <p>&nbsp;</p>
+  <h1>Anketler</h1>
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Anket Ara" (keyup)="Filtrele($event)">
+  </mat-form-field>
+  <button mat-fab color="primary" matTooltip="Anket Ekle" (click)="Ekle()">
+    <mat-icon aria-label="label">add</mat-icon>
+  </button>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+    <ng-container matColumnDef="AnkKatId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>  Anket Kategori Id </th>
+      <td mat-cell *matCellDef="let kayit"> {{kayit.AnkKatId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="AnkId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header > Anket Id </th>
+      <td mat-cell *matCellDef="let kayit"> {{kayit.AnkId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="AnkAdi">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header > Anket Adi </th>
+      <td mat-cell *matCellDef="let kayit"> {{kayit.AnkAdi}} </td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="AnkSoruSayisi">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header > Soru Sayisi </th>
+      <td mat-cell *matCellDef="let kayit"> {{kayit.AnkSoruSayisi}} </td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="islemler">
+      <th mat-header-cell *matHeaderCellDef> islemler </th>
+      <td mat-cell *matCellDef="let kayit">
+
+      <button mat-icon-button color="primary" matTooltip="Soru Listele" [routerLink]="['/sorularlistele',kayit.AnkId]">
+        <mat-icon aria-label="label">article</mat-icon>
+      </button>
+
+      <button mat-icon-button color="primary" matTooltip="Anket Düzenle" (click)="Duzenle(kayit)">
+        <mat-icon aria-label="label">edit</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" matTooltip="Anket Sil" (click)="Sil(kayit)">
+        <mat-icon aria-label="label">delete</mat-icon>
+      </button>
+        
+      </td>
+    </ng-container>
+  
+    
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator 
+        [pageSizeOptions]="[10, 15, 25, 100]" showFirstLastButtons="">
+  </mat-paginator>
+
+</div>

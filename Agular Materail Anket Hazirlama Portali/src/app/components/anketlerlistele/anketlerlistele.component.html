@@ -1,0 +1,61 @@
+<div class="container">
+  <button mat-fab color="primary" matTooltip="Geri Git" [routerLink]="['/kategori']">
+    <mat-icon aria-label="label">arrow_back</mat-icon>
+  </button>
+  <p>&nbsp;</p>
+
+
+  <h1>Anketler</h1>
+  <h3><b>Kategori Id : </b>{{gelenKategori?.KatId}}</h3>
+  <h3><b>Kategori Adi : </b>{{gelenKategori?.KatAdi}}</h3>
+
+
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Anket Ara" (keyup)="Filtrele($event)">
+  </mat-form-field>
+  
+  <button mat-fab color="primary" matTooltip="Anket Ekle" (click)="Ekle()">
+    <mat-icon aria-label="label">add</mat-icon>
+  </button>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+    <ng-container matColumnDef="AnkKatId">
+      <th mat-header-cell *matHeaderCellDef >Anket Kategori Id </th>
+      <td mat-cell *matCellDef="let kayit"> {{kayit.AnkKatId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="AnkId">
+      <th mat-header-cell *matHeaderCellDef > Anket Id </th>
+      <td mat-cell *matCellDef="let kayit"> {{kayit.AnkId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="AnkAdi">
+      <th mat-header-cell *matHeaderCellDef > Anket Adi </th>
+      <td mat-cell *matCellDef="let kayit"> {{kayit.AnkAdi}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="islemler">
+      <th mat-header-cell *matHeaderCellDef> islemler </th>
+      <td mat-cell *matCellDef="let kayit">
+
+
+        <button mat-icon-button color="primary" matTooltip="Anket Düzenle" (click)="Duzenle(kayit)">
+          <mat-icon aria-label="label">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" matTooltip="Anket Sil" (click)="Sil(kayit)" >
+          <mat-icon aria-label="label">delete</mat-icon>
+        </button>
+        
+      </td>
+    </ng-container>
+  
+    
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>

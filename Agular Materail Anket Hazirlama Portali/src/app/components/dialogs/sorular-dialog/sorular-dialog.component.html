@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+  <span>{{dialogBaslik}}</span>
+</mat-toolbar>
+  <div class="container">
+    <form [formGroup]="frm">
+      <mat-form-field appearance="outline">
+        <mat-label>Soru Id</mat-label>
+        <input matInput placeholder="Soru Id" formControlName="SorId" name="SorId" required="" type="number">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Soru Anket Id</mat-label>
+        <input matInput placeholder="Soru Anket Id" formControlName="SorAnkId" name="SorAnkId" required="" type="number">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>1.soru</mat-label>
+        <input matInput placeholder="1.Soru" formControlName="C1_Soru" name="C1_Soru" required="" type="text">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>2.Soru</mat-label>
+        <input matInput placeholder="2.Soru" formControlName="C2_Soru" name="C2_Soru" required="" type="text">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>3.Soru</mat-label>
+        <input matInput placeholder="3.Soru" formControlName="C3_Soru" name="C3_Soru" required="" type="text">
+      </mat-form-field>
+    </form>
+    <button mat-raised-button color="primary" (click)="dialogRef.close(frm.value)" [disabled]="frm.invalid"> Kaydet</button>&nbsp;
+    <button mat-raised-button color="warn" (click)="dialogRef.close()"> iptal</button>
+
+  </div>
